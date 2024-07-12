@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Silent Echo</string>
+    <string name="close">Close</string>
+    <string name="title_home">Home</string>
+    <string name="title_news">News</string>
+    <string name="title_profile">Profile</string>
+</resources>
