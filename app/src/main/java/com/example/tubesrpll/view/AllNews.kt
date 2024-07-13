@@ -21,23 +21,15 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
-
-/**
- * Aktivity untuk menampilkan semua berita.
- */
 class AllNews : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView // RecyclerView untuk menampilkan daftar berita
     private lateinit var adapter: NewsAdapter // Adapter untuk RecyclerView
-    private val newsList = mutableListOf<NewsItem>() //Daftar Berita
-    private lateinit var profileImageView: ImageView //ImageView untuk Gambar Profile Pengguna
-    private lateinit var textViewNews: TextView //TextView untuk menampilkan teks
+    private val newsList = mutableListOf<NewsItem>() // Daftar Berita
+    private lateinit var profileImageView: ImageView // ImageView untuk Gambar Profile Pengguna
+    private lateinit var textViewNews: TextView // TextView untuk menampilkan teks
     private lateinit var auth: FirebaseAuth
 
-
-    /**
-     * Metode yang dipanggil saat aktivitas dibuat.
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_news)
@@ -58,6 +50,12 @@ class AllNews : AppCompatActivity() {
         profileImageView = findViewById(R.id.imageProfileASL)
         fetchProfileImage()
 
+        // Inisialisasi tombol back dan setel onClickListener
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            startHomeActivity()
+        }
+
         // Inisialisasi Bottom Navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigationView.setOnNavigationItemSelectedListener { item: MenuItem ->
@@ -76,9 +74,6 @@ class AllNews : AppCompatActivity() {
         }
     }
 
-    /**
-     * Metode untuk memuat semua berita dari Firestore.
-     */
     private fun fetchAllNews() {
         val db = Firebase.firestore
         db.collection("news")
@@ -96,17 +91,11 @@ class AllNews : AppCompatActivity() {
             }
     }
 
-    /**
-     * Metode yang dipanggil saat aktivitas dilanjutkan.
-     */
     override fun onResume() {
         super.onResume()
         fetchProfileImage() // Memuat ulang gambar profil saat aktivitas dilanjutkan
     }
 
-    /**
-     * Metode untuk memuat gambar profil pengguna dari Firestore.
-     */
     private fun fetchProfileImage() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
@@ -154,6 +143,5 @@ class AllNews : AppCompatActivity() {
 
     private fun startHomeActivity() {
         startActivity(Intent(this, Home::class.java))
-
     }
 }

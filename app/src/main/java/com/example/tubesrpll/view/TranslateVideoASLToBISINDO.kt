@@ -2,11 +2,8 @@ package com.example.tubesrpll.view
 
 import android.Manifest
 import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.ImageFormat
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.CameraAccessException
@@ -38,7 +35,6 @@ import com.example.tubesrpll.R
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import org.tensorflow.lite.Interpreter
-import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
 import java.nio.ByteBuffer
@@ -49,7 +45,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
-class TranslateVideoBISINDOToText : AppCompatActivity() {
+class TranslateVideoASLToBISINDO : AppCompatActivity() {
     // Deklarasi variabel
     private lateinit var textureView: TextureView
     private lateinit var imageViewResult: ImageView
@@ -74,7 +70,7 @@ class TranslateVideoBISINDOToText : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_translate_video_bisindo_to_text)
+        setContentView(R.layout.activity_translate_video_asl_to_bisindo)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -90,6 +86,12 @@ class TranslateVideoBISINDOToText : AppCompatActivity() {
             )
         } else {
             initializeComponents()
+        }
+
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
         }
     }
 

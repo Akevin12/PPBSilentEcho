@@ -3,11 +3,6 @@ package com.example.tubesrpll.view
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -183,8 +178,8 @@ class Home : AppCompatActivity() {
         navigateToActivity(TranslateVideoASLToText::class.java)
     }
 
-    fun moveToVideoBISINDOToText(view: View) {
-        navigateToActivity(TranslateVideoBISINDOToText::class.java)
+    fun moveToVideoASLToBISINDO(view: View) {
+        navigateToActivity(TranslateVideoASLToBISINDO::class.java)
     }
 
     fun moveToTextToASL(view: View) {

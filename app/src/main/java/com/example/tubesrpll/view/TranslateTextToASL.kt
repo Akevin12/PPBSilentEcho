@@ -1,5 +1,6 @@
 package com.example.tubesrpll.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -71,6 +72,12 @@ class TranslateTextToASL : AppCompatActivity() {
         textViewASL = findViewById(R.id.textView)
         profileImageView = findViewById(R.id.imageProfileASL)
         fetchProfileImage()
+
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onResume() {

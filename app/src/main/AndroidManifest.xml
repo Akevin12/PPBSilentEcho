@@ -27,7 +27,7 @@
             android:name=".view.ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".view.TranslateVideoBISINDOToText"
+            android:name=".view.TranslateVideoASLToBISINDO"
             android:exported="false" />
         <activity
             android:name=".view.EditProfile"

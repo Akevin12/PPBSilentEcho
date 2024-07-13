@@ -10,7 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main"
-        tools:context=".view.TranslateVideoBISINDOToText">
+        tools:context=".view.TranslateVideoASLToBISINDO">
+
+        <ImageView
+            android:id="@+id/imageViewBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="192dp"
+            android:layout_marginTop="60dp"
+            android:background="#2B2E4A"
+            android:contentDescription="Back"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
         <ImageView
             android:id="@+id/imageView"

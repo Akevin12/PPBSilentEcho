@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.Surface
 import android.view.TextureView
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.NonNull
@@ -75,6 +76,12 @@ class TranslateVideoASLToText : AppCompatActivity() {
             )
         } else {
             initializeComponents()
+        }
+
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
         }
     }
 
