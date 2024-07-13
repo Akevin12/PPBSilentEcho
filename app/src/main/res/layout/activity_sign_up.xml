@@ -57,30 +57,30 @@
             android:layout_marginTop="10dp" />
 
         <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="26dp"
+            android:id="@+id/imageView10"
+            android:layout_width="24dp"
             android:layout_height="21dp"
-            app:srcCompat="@drawable/login_icon"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="22dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewReg"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="20dp" />
+            app:srcCompat="@drawable/login_icon" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/name"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView11"
-            app:layout_constraintTop_toBottomOf="@id/textViewReg"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp" />
+            app:layout_constraintStart_toEndOf="@id/imageView10"
+            app:layout_constraintTop_toBottomOf="@id/textViewReg" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditNama"
-            android:layout_width="233dp"
-            android:layout_height="40dp"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
             android:layout_marginTop="9dp"
             android:background="@drawable/rondedcorner"
             android:hint="Input Name"
@@ -98,8 +98,8 @@
             app:srcCompat="@drawable/email_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputEditNama"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="16dp" />
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="22dp" />
 
         <TextView
             android:id="@+id/email"
@@ -109,13 +109,13 @@
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/imageView12"
             app:layout_constraintTop_toBottomOf="@id/textInputEditNama"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditEmail"
-            android:layout_width="233dp"
-            android:layout_height="40dp"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
             android:layout_marginTop="9dp"
             android:background="@drawable/rondedcorner"
             android:hint="hello@example.com"
@@ -133,8 +133,8 @@
             app:srcCompat="@drawable/phone_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputEditEmail"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="16dp" />
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/phone"
@@ -149,8 +149,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditPhone"
-            android:layout_width="233dp"
-            android:layout_height="40dp"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
             android:layout_marginTop="9dp"
             android:background="@drawable/rondedcorner"
             android:hint="Input phone number"
@@ -168,8 +168,8 @@
             app:srcCompat="@drawable/password_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputEditPhone"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="22dp" />
 
         <TextView
             android:id="@+id/textPassword"
@@ -184,8 +184,8 @@
 
         <EditText
             android:id="@+id/editTextPassword2"
-            android:layout_width="233dp"
-            android:layout_height="44dp"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
             android:layout_marginTop="9dp"
             android:background="@drawable/rondedcorner"
             android:ems="10"

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
@@ -27,10 +28,15 @@ class Profile : AppCompatActivity() {
 
     // Deklarasi variabel UI
     private lateinit var imageView: ImageView
+    private lateinit var imageGender: ImageView
+    private lateinit var imageAddress: ImageView
     private lateinit var button: FloatingActionButton
     private lateinit var nameProfile: TextView
     private lateinit var phoneProfile: TextView
     private lateinit var emailProfile: TextView
+    private lateinit var genderProfile: TextView
+    private lateinit var addressProfile: TextView
+    private lateinit var buttonEdit: Button
     private lateinit var buttonLogout: Button
 
     companion object {
@@ -44,10 +50,15 @@ class Profile : AppCompatActivity() {
 
         // Inisialisasi variabel UI
         imageView = findViewById(R.id.imagePhoto)
+        imageGender = findViewById(R.id.imageGender)
+        imageAddress = findViewById(R.id.imageAddress)
         button = findViewById(R.id.cameraButton)
         nameProfile = findViewById(R.id.NameProfile)
         phoneProfile = findViewById(R.id.phoneProfile)
         emailProfile = findViewById(R.id.emailProfile)
+        genderProfile = findViewById(R.id.genderProfile)
+        addressProfile = findViewById(R.id.addressProfile)
+        buttonEdit = findViewById(R.id.buttonEdit)
         buttonLogout = findViewById(R.id.buttonLogout)
 
         // Set listener untuk tombol kamera
@@ -133,17 +144,48 @@ class Profile : AppCompatActivity() {
 
             db.collection("users").document(userId).get()
                 .addOnSuccessListener { document ->
-                    if (document != null) {
+                    if (document != null && document.exists()) {
                         val name = document.getString("name")
                         val phone = document.getString("phone")
                         val profileImage = document.getString("profileImage")
+                        val gender = document.getString("gender")
+                        val address = document.getString("address")
 
                         nameProfile.text = name
                         phoneProfile.text = phone
+
                         if (profileImage != null && profileImage.isNotEmpty()) {
                             Glide.with(this)
                                 .load(profileImage)
                                 .into(imageView)
+                        }
+
+                        if (gender != null && gender.isNotEmpty()) {
+                            genderProfile.text = gender
+                            imageGender.visibility = View.VISIBLE
+                        } else {
+                            imageGender.visibility = View.GONE
+                        }
+
+                        if (address != null && address.isNotEmpty()) {
+                            addressProfile.text = address
+                            imageAddress.visibility = View.VISIBLE
+                        } else {
+                            addressProfile.text = ""
+                            imageAddress.visibility = View.GONE
+                        }
+
+                        // Adjust button position based on fields presence
+                        if (gender != null && gender.isNotEmpty() || (address != null && address.isNotEmpty())) {
+                            buttonEdit.visibility = View.VISIBLE
+                            val params = buttonEdit.layoutParams as ConstraintLayout.LayoutParams
+                            params.topMargin = resources.getDimensionPixelSize(R.dimen.button_edit_top_margin)
+                            buttonEdit.layoutParams = params
+                        } else {
+                            buttonEdit.visibility = View.VISIBLE
+                            val params = buttonEdit.layoutParams as ConstraintLayout.LayoutParams
+                            params.topMargin = resources.getDimensionPixelSize(R.dimen.button_edit_top_margin_no_fields)
+                            buttonEdit.layoutParams = params
                         }
                     } else {
                         Toast.makeText(this, "Document does not exist", Toast.LENGTH_SHORT).show()
@@ -158,6 +200,8 @@ class Profile : AppCompatActivity() {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 
     // Fungsi untuk pindah ke halaman Edit Profile
     fun moveToEditProfile(view: View) {

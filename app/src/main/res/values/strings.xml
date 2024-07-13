@@ -47,4 +47,7 @@
     <string name="please_enter_the_email_you_use_to_sign_in">Please enter the email you use to sign in</string>
     <string name="mainAddress">Email Address</string>
     <string name="request_password_reset">Request password reset</string>
+    <string name="edit_profileButton">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="input_text">Input Text</string>
 </resources>

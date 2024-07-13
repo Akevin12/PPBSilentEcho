@@ -34,7 +34,7 @@ class SignIn : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
 
         // Inisialisasi variabel UI
-        emailEt = findViewById(R.id.textInputEditText)
+        emailEt = findViewById(R.id.textInputEditEmail)
         passEt = findViewById(R.id.editTextPassword)
         signInButton = findViewById(R.id.button6)
 

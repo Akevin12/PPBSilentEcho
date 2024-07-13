@@ -20,7 +20,6 @@
                 android:layout_width="71dp"
                 android:layout_height="74dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/ic_launcher_background" />
@@ -29,13 +28,13 @@
                 android:id="@+id/textEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="90dp"
                 android:text="@string/edit_profile"
                 android:textSize="48sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/imageEdit" />
 
             <TextView
                 android:id="@+id/textViewReg"
@@ -52,34 +51,37 @@
                 android:id="@+id/imageView4"
                 android:layout_width="115dp"
                 android:layout_height="112dp"
-                app:layout_constraintBottom_toTopOf="@id/textEdit"
+                android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/edit_profile_icon" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="84dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/name"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewReg" />
 
             <ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="24dp"
                 android:layout_height="21dp"
-                app:layout_constraintEnd_toStartOf="@id/name"
-                app:layout_constraintTop_toTopOf="@id/name"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewReg"
                 app:srcCompat="@drawable/login_icon" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/name"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/imageView10"
+                app:layout_constraintTop_toBottomOf="@id/textViewReg" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditNama"
-                android:layout_width="304dp"
-                android:layout_height="43dp"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="9dp"
                 android:background="@drawable/rondedcorner"
                 android:hint="@string/input_name"
@@ -90,23 +92,33 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/name" />
 
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="24dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputEditNama"
+                app:srcCompat="@drawable/baseline_gender_24" />
+
             <TextView
                 android:id="@+id/gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/gender"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageView18"
                 app:layout_constraintTop_toBottomOf="@id/textInputEditNama" />
 
             <RadioGroup
                 android:id="@+id/radioGroupGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
                 android:layout_marginTop="9dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/gender">
 
@@ -116,52 +128,39 @@
                     android:layout_height="wrap_content"
                     android:text="@string/male" />
 
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="23dp"
-                    android:layout_height="22dp"
-                    app:layout_constraintStart_toEndOf="@id/radioMale"
-                    app:layout_constraintTop_toTopOf="@id/radioMale"
-                    app:srcCompat="@drawable/male_icon" />
-
                 <RadioButton
                     android:id="@+id/radioFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/female" />
 
-                <ImageView
-                    android:id="@+id/imageView19"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    app:layout_constraintStart_toEndOf="@id/radioFemale"
-                    app:layout_constraintTop_toTopOf="@id/radioFemale"
-                    app:srcCompat="@drawable/female_icon" />
             </RadioGroup>
-
-            <TextView
-                android:id="@+id/phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="84dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/phone_number"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/radioGroupGender" />
 
             <ImageView
                 android:id="@+id/imageView14"
                 android:layout_width="24dp"
                 android:layout_height="22dp"
-                app:layout_constraintEnd_toStartOf="@id/phone"
-                app:layout_constraintTop_toTopOf="@id/phone"
-                app:srcCompat="@drawable/phone_icon" />
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioGroupGender"
+                app:srcCompat="@drawable/baseline_phone_24" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/phone_number"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/imageView14"
+                app:layout_constraintTop_toBottomOf="@id/radioGroupGender" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditPhone"
-                android:layout_width="304dp"
-                android:layout_height="43dp"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="9dp"
                 android:background="@drawable/rondedcorner"
                 android:hint="@string/input_phone_number"
@@ -172,44 +171,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/phone" />
 
-            <TextView
-                android:id="@+id/textAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="84dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/address"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInputEditPhone" />
-
             <ImageView
                 android:id="@+id/imageView17"
                 android:layout_width="24dp"
                 android:layout_height="18dp"
-                app:layout_constraintEnd_toStartOf="@id/textAddress"
-                app:layout_constraintTop_toTopOf="@id/textAddress"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputEditPhone"
                 app:srcCompat="@drawable/address_icon" />
+
+            <TextView
+                android:id="@+id/textAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/address"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/imageView17"
+                app:layout_constraintTop_toBottomOf="@id/textInputEditPhone" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputEditAddress"
-                android:layout_width="304dp"
-                android:layout_height="43dp"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="9dp"
                 android:background="@drawable/rondedcorner"
                 android:ems="10"
                 android:hint="@string/input_address"
                 android:paddingHorizontal="10dp"
+                android:paddingTop="10dp"
                 android:textSize="16sp"
+                android:gravity="top|start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textAddress" />
+
 
             <Button
                 android:id="@+id/buttonSave"
                 android:layout_width="147dp"
                 android:layout_height="52dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="30dp"
                 android:backgroundTint="#000080"
                 android:text="@string/save_changes"
                 app:layout_constraintEnd_toEndOf="parent"
