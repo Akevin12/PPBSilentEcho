@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="150dp"
-                android:text="EDIT PROFILE"
+                android:text="@string/edit_profile"
                 android:textSize="48sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="57dp"
-                android:text="Edit Your Profile"
+                android:text="@string/edit_your_profile"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="84dp"
                 android:layout_marginTop="16dp"
-                android:text="Name"
+                android:text="@string/name"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewReg" />
@@ -82,7 +82,7 @@
                 android:layout_height="43dp"
                 android:layout_marginTop="9dp"
                 android:background="@drawable/rondedcorner"
-                android:hint="Input Name"
+                android:hint="@string/input_name"
                 android:paddingHorizontal="10dp"
                 android:singleLine="true"
                 android:textSize="16sp"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="57dp"
                 android:layout_marginTop="20dp"
-                android:text="Gender"
+                android:text="@string/gender"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textInputEditNama" />
@@ -114,7 +114,7 @@
                     android:id="@+id/radioMale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="@string/male" />
 
                 <ImageView
                     android:id="@+id/imageView18"
@@ -128,7 +128,7 @@
                     android:id="@+id/radioFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:text="@string/female" />
 
                 <ImageView
                     android:id="@+id/imageView19"
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="84dp"
                 android:layout_marginTop="20dp"
-                android:text="Phone Number"
+                android:text="@string/phone_number"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/radioGroupGender" />
@@ -164,7 +164,7 @@
                 android:layout_height="43dp"
                 android:layout_marginTop="9dp"
                 android:background="@drawable/rondedcorner"
-                android:hint="Input phone number"
+                android:hint="@string/input_phone_number"
                 android:paddingHorizontal="10dp"
                 android:singleLine="true"
                 android:textSize="16sp"
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="84dp"
                 android:layout_marginTop="20dp"
-                android:text="Address"
+                android:text="@string/address"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textInputEditPhone" />
@@ -198,7 +198,7 @@
                 android:layout_marginTop="9dp"
                 android:background="@drawable/rondedcorner"
                 android:ems="10"
-                android:hint="Input Address"
+                android:hint="@string/input_address"
                 android:paddingHorizontal="10dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -211,7 +211,7 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="3dp"
                 android:backgroundTint="#000080"
-                android:text="Save Changes"
+                android:text="@string/save_changes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textInputEditAddress" />

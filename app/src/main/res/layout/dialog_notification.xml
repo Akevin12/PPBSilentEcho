@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Notification"
+            android:text="@string/notification"
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="34dp"
             android:gravity="center"
-            android:text="Message"
+            android:text="@string/message"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
