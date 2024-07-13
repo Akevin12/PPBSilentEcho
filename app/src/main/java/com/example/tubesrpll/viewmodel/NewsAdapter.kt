@@ -60,10 +60,6 @@ class NewsAdapter(private val newsList: List<NewsItem>) :
 
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                val context = widget.context
-                val intent = Intent(context, NewsDetail::class.java)
-                intent.putExtra("documentId", newsItem.id)
-                context.startActivity(intent)
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -84,6 +80,18 @@ class NewsAdapter(private val newsList: List<NewsItem>) :
             SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID")).format(it.toDate())
         } ?: "Waktu tidak valid"
         holder.newsDate.text = formattedDate
+
+        // Menambahkan OnClickListener pada itemView
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, NewsDetail::class.java)
+            intent.putExtra("documentId", newsItem.id)
+            intent.putExtra("headline", newsItem.Headline)
+            intent.putExtra("content", newsItem.Content)
+            intent.putExtra("image", newsItem.Image)
+            intent.putExtra("timestamp", newsItem.Timestamp?.toDate()?.time)
+            context.startActivity(intent)
+        }
     }
 
     // Mengembalikan jumlah total item dalam RecyclerView
@@ -95,7 +103,7 @@ class NewsAdapter(private val newsList: List<NewsItem>) :
     private fun getFirstTwoSentences(content: String): String {
         val sentences = content.split(". ")
         return if (sentences.size >= 1) {
-            "${sentences[0]}}."
+            "${sentences[0]}. "
         } else {
             content
         }

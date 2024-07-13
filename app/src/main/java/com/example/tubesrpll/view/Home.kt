@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -32,6 +33,7 @@ class Home : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var profileImageView: ImageView
+    private lateinit var imageViewBack: ImageView
     private lateinit var textView2: TextView
     private lateinit var recyclerView: RecyclerView
     private val newsList = mutableListOf<NewsItem>()
@@ -120,17 +122,38 @@ class Home : AppCompatActivity() {
     }
 
     private fun showLargeImage() {
-        val dialog = Dialog(this)
+        val dialog = Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen)
         dialog.setContentView(R.layout.dialog_large_image)
         val largeImageView: ImageView = dialog.findViewById(R.id.largeImageView)
+        val backButton: ImageView = dialog.findViewById(R.id.imageViewBack)
 
-        // Mengambil gambar dari profileImageView dan menampilkannya di largeImageView
+        // Mengambil gambar dari imageProfile dan menampilkannya di largeImageView
         profileImageView.drawable?.let {
             largeImageView.setImageDrawable(it)
         }
 
+        dialog.window?.setBackgroundDrawableResource(android.R.color.black)
+
+        // Set the ImageView to have MATCH_PARENT for both width and height
+        largeImageView.layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT
+        largeImageView.layoutParams.height = RelativeLayout.LayoutParams.MATCH_PARENT
+        largeImageView.scaleType = ImageView.ScaleType.FIT_CENTER
+
+        // Show the back button initially
+        backButton.visibility = View.VISIBLE
+
+        largeImageView.setOnClickListener {
+            // Close dialog when image is clicked
+            dialog.dismiss()
+        }
+
+        backButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
         dialog.show()
     }
+
 
     private fun getMainNews() {
         val db = FirebaseFirestore.getInstance()
