@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,12 @@ class ForgotPassword : AppCompatActivity() {
         // Mendapatkan referensi ke komponen UI
         emailEt = findViewById(R.id.textInputEditText)
         resetPassword = findViewById(R.id.button6)
+
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
+        }
 
         // Menangani klik tombol reset password
         resetPassword.setOnClickListener {

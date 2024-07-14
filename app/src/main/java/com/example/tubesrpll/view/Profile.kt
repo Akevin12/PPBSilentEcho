@@ -1,5 +1,6 @@
 package com.example.tubesrpll.view
 
+import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -61,6 +63,12 @@ class Profile : AppCompatActivity() {
         buttonEdit = findViewById(R.id.buttonEdit)
         buttonLogout = findViewById(R.id.buttonLogout)
 
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
+        }
+
         // Set listener untuk tombol kamera
         button.setOnClickListener {
             pickImage()
@@ -71,8 +79,45 @@ class Profile : AppCompatActivity() {
             logout()
         }
 
+        imageView.setOnClickListener {
+            showLargeImage()
+        }
+
         // Ambil data profil dari Firestore
         fetchProfileData()
+    }
+
+    private fun showLargeImage() {
+        val dialog = Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+        dialog.setContentView(R.layout.dialog_large_image)
+        val largeImageView: ImageView = dialog.findViewById(R.id.largeImageView)
+        val backButton: ImageView = dialog.findViewById(R.id.imageViewBack)
+
+        // Mengambil gambar dari imageProfile dan menampilkannya di largeImageView
+        imageView.drawable?.let {
+            largeImageView.setImageDrawable(it)
+        }
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.black)
+
+        // Set the ImageView to have MATCH_PARENT for both width and height
+        largeImageView.layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT
+        largeImageView.layoutParams.height = RelativeLayout.LayoutParams.MATCH_PARENT
+        largeImageView.scaleType = ImageView.ScaleType.FIT_CENTER
+
+        // Show the back button initially
+        backButton.visibility = View.VISIBLE
+
+        largeImageView.setOnClickListener {
+            // Close dialog when image is clicked
+            dialog.dismiss()
+        }
+
+        backButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     // Fungsi untuk memilih gambar dari galeri

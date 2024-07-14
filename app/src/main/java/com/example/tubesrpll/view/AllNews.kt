@@ -45,11 +45,6 @@ class AllNews : AppCompatActivity() {
         // Memuat berita dari Firebase
         fetchAllNews()
 
-        // Inisialisasi TextView dan ImageView
-        textViewNews = findViewById(R.id.textView)
-        profileImageView = findViewById(R.id.imageProfileASL)
-        fetchProfileImage()
-
         // Inisialisasi tombol back dan setel onClickListener
         val backImageView = findViewById<ImageView>(R.id.imageViewBack)
         backImageView.setOnClickListener {
@@ -89,48 +84,6 @@ class AllNews : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.w("AllNewsActivity", "Error getting documents.", exception)
             }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        fetchProfileImage() // Memuat ulang gambar profil saat aktivitas dilanjutkan
-    }
-
-    private fun fetchProfileImage() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            val userId = currentUser.uid
-            val db = FirebaseFirestore.getInstance()
-
-            db.collection("users").document(userId).get()
-                .addOnSuccessListener { document ->
-                    if (document != null && document.exists()) {
-                        // Memuat gambar profil dari URL
-                        val profileImage = document.getString("profileImage")
-                        if (profileImage != null && profileImage.isNotEmpty()) {
-                            Picasso.get().load(profileImage).into(profileImageView)
-                        } else {
-                            profileImageView.setImageResource(R.drawable.baseline_person_24)
-                        }
-
-                        // Menampilkan nama pengguna atau sambutan default
-                        val userName = document.getString("name")
-                        if (userName != null && userName.isNotEmpty()) {
-                            textViewNews.text = "Welcome $userName"
-                        } else {
-                            textViewNews.text = "Welcome Guest"
-                        }
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Failed to fetch profile image: ${exception.message}", Toast.LENGTH_SHORT).show()
-                    Log.e("Firestore", "Error fetching profile image", exception)
-                    textViewNews.text = "Welcome Guest"
-                }
-        } else {
-            profileImageView.setImageResource(R.drawable.baseline_person_24)
-            textViewNews.text = "Welcome Guest"
-        }
     }
 
     private fun startProfileActivity() {

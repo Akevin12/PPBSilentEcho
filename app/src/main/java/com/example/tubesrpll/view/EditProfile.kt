@@ -3,6 +3,7 @@ package com.example.tubesrpll.view
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,12 @@ class EditProfile : AppCompatActivity() {
         // Inisialisasi Firestore dan FirebaseAuth
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
+
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
+        }
 
         // Mendapatkan referensi ke komponen UI
         val nameInput = findViewById<EditText>(R.id.textInputEditNama)

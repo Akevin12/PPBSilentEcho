@@ -68,56 +68,10 @@ class TranslateTextToASL : AppCompatActivity() {
             }
         }
 
-        // Menghubungkan variabel dengan elemen UI lainnya
-        textViewASL = findViewById(R.id.textView)
-        profileImageView = findViewById(R.id.imageProfileASL)
-        fetchProfileImage()
-
         // Tombol kembali
         val backImageView = findViewById<ImageView>(R.id.imageViewBack)
         backImageView.setOnClickListener {
             onBackPressed()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        fetchProfileImage()
-    }
-
-    // Fungsi untuk mengambil dan menampilkan gambar profil dari Firestore
-    private fun fetchProfileImage() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            val userId = currentUser.uid
-            val db = FirebaseFirestore.getInstance()
-
-            db.collection("users").document(userId).get()
-                .addOnSuccessListener { document ->
-                    if (document != null && document.exists()) {
-                        val profileImage = document.getString("profileImage")
-                        if (profileImage != null && profileImage.isNotEmpty()) {
-                            Picasso.get().load(profileImage).into(profileImageView)
-                        } else {
-                            profileImageView.setImageResource(R.drawable.baseline_person_24)
-                        }
-
-                        val userName = document.getString("name")
-                        if (userName != null && userName.isNotEmpty()) {
-                            textViewASL.text = "Welcome $userName"
-                        } else {
-                            textViewASL.text = "Welcome Guest"
-                        }
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Failed to fetch profile image: ${exception.message}", Toast.LENGTH_SHORT).show()
-                    Log.e("Firestore", "Error fetching profile image", exception)
-                    textViewASL.text = "Welcome Guest"
-                }
-        } else {
-            profileImageView.setImageResource(R.drawable.baseline_person_24)
-            textViewASL.text = "Welcome Guest"
         }
     }
 

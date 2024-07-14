@@ -28,7 +28,6 @@ class Home : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var profileImageView: ImageView
-    private lateinit var imageViewBack: ImageView
     private lateinit var textView2: TextView
     private lateinit var recyclerView: RecyclerView
     private val newsList = mutableListOf<NewsItem>()

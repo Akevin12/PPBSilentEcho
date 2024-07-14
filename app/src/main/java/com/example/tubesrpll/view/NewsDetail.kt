@@ -43,6 +43,12 @@ class NewsDetail : AppCompatActivity() {
         textDetailContent = findViewById(R.id.textDetailContent)
         imageDetail = findViewById(R.id.imageView2)
 
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
+        }
+
         // Menambahkan padding untuk menghindari sistem bar
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -55,11 +61,6 @@ class NewsDetail : AppCompatActivity() {
         if (documentId != null) {
             fetchNewsDetail(documentId)
         }
-
-        // Menampilkan profil pengguna
-        textView2 = findViewById(R.id.textView)
-        profileImageView = findViewById(R.id.imageProfile)
-        fetchProfileImage()
     }
 
     /**
@@ -117,44 +118,6 @@ class NewsDetail : AppCompatActivity() {
                 textDetailTime.text = ""
                 Log.e("Firestore", "Error fetching news", e)
             }
-    }
-
-    /**
-     * Memuat gambar profil pengguna dari Firestore.
-     */
-    private fun fetchProfileImage() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            val userId = currentUser.uid
-            val db = FirebaseFirestore.getInstance()
-
-            db.collection("users").document(userId).get()
-                .addOnSuccessListener { document ->
-                    if (document != null && document.exists()) {
-                        val profileImage = document.getString("profileImage")
-                        if (profileImage != null && profileImage.isNotEmpty()) {
-                            Picasso.get().load(profileImage).into(profileImageView)
-                        } else {
-                            profileImageView.setImageResource(R.drawable.baseline_person_24)
-                        }
-
-                        val userName = document.getString("name")
-                        if (userName != null && userName.isNotEmpty()) {
-                            textView2.text = "Welcome $userName"
-                        } else {
-                            textView2.text = "Welcome Guest"
-                        }
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Failed to fetch profile image: ${exception.message}", Toast.LENGTH_SHORT).show()
-                    Log.e("Firestore", "Error fetching profile image", exception)
-                    textView2.text = "Welcome Guest"
-                }
-        } else {
-            profileImageView.setImageResource(R.drawable.baseline_person_24)
-            textView2.text = "Welcome Guest"
-        }
     }
 
     /**

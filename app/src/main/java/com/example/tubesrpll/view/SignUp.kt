@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +46,13 @@ class SignUp : AppCompatActivity() {
 
         // Mendapatkan instance FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
+
+        // Inisialisasi tombol back dan setel onClickListener
+        // Tombol kembali
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            onBackPressed()
+        }
 
         // Set onClickListener untuk tombol daftar
         signUpButton.setOnClickListener {

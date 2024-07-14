@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,12 @@ class SignIn : AppCompatActivity() {
 
         // Inisialisasi Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
+
+        // Inisialisasi tombol back dan setel onClickListener
+        val backImageView = findViewById<ImageView>(R.id.imageViewBack)
+        backImageView.setOnClickListener {
+            startHomeActivity()
+        }
 
         // Set listener untuk tombol Sign In
         signInButton.setOnClickListener {
@@ -125,5 +132,9 @@ class SignIn : AppCompatActivity() {
         spannableString2.setSpan(clickableSpan2, 21, 34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         textView.text = spannableString2
         textView.movementMethod = android.text.method.LinkMovementMethod.getInstance()
+    }
+
+    private fun startHomeActivity() {
+        startActivity(Intent(this, Home::class.java))
     }
 }
