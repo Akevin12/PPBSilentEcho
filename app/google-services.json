@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "389895854488",
+    "firebase_url": "https://rpll-d5682-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "rpll-d5682",
     "storage_bucket": "rpll-d5682.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.tubesrpll"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "389895854488-hc42va4502ban32kdm9nftir75isj3bg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tubesrpll",
+            "certificate_hash": "4fc29a24a131c215554415052ad92a2ff081335d"
+          }
+        },
+        {
+          "client_id": "389895854488-ttt1o4569ag29bcikkcab98bm3t5kc4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCJ-uceBCkPUlrr9I5aauGgJETUuRXMjvI"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389895854488-ttt1o4569ag29bcikkcab98bm3t5kc4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
